@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+import os
 
 def selectFile():
     root = tk.Tk() # create a root window
@@ -27,3 +28,11 @@ def writtenInput(prompt):
     root = tk.Tk() # create a root window
     root.withdraw() # hide the root window
     return input(prompt)
+
+def getSubfolders(folder_path):
+    subfolderPaths = []
+    for item in os.listdir(folder_path):
+        item_path = os.path.join(folder_path, item)
+        if os.path.isdir(item_path):
+            subfolderPaths.append(item_path)
+    return subfolderPaths
